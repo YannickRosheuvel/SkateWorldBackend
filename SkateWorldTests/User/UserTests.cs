@@ -1,6 +1,5 @@
+using DistributedSkateWorld.Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SkateWorld.Core.Interfaces;
-using SkateWorld.Core.Logic;
 using SkateWorldTests.UserMock;
 
 namespace UserTests
