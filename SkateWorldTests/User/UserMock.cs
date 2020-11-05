@@ -1,5 +1,5 @@
-﻿using SkateWorld.Core.Interfaces;
-using SkateWorld.Core.Models;
+﻿using DistributedSkateWorld.Interfaces;
+using DistributedSkateWorld.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

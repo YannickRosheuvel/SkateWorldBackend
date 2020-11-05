@@ -1,8 +1,8 @@
-﻿using SkateWorld.Core.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SkateWorld.Core.Models;
+using DistributedSkateWorld.Interfaces;
+using DistributedSkateWorld.Models;
 
 namespace SkateWorldTests.CourseMock
 {
