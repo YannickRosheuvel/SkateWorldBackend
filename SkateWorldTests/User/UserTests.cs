@@ -15,7 +15,7 @@ namespace UserTests
 
             var actual = userBLL.AddExperience(10, 1);
 
-            Assert.AreEqual(3, actual.Level);
+            Assert.AreEqual(2, actual.Level);
 
         }
     }
