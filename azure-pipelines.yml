@@ -49,8 +49,3 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    workingDir: 'DistributedSkateWorld'
-    customCommand: 'run test'
