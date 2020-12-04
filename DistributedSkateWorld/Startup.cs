@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WebSocketManager;
+using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Http;
 
 namespace DistributedSkateWorld
 {
@@ -26,8 +29,19 @@ namespace DistributedSkateWorld
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.AddCors();
+
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "ProjectCreationSession";
+                options.IdleTimeout = TimeSpan.FromSeconds(300);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +55,8 @@ namespace DistributedSkateWorld
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSession();
 
             app.UseRouting();
 

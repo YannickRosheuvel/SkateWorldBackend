@@ -18,21 +18,6 @@ namespace DistributedSkateWorld.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DistributedSkateWorld.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Comment");
-                });
-
             modelBuilder.Entity("DistributedSkateWorld.Models.Course", b =>
                 {
                     b.Property<int>("Id")
@@ -95,7 +80,7 @@ namespace DistributedSkateWorld.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Adres")
+                    b.Property<string>("Address")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
