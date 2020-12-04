@@ -71,5 +71,20 @@ namespace DistributedSkateWorld.DAL
 
             return null;
         }
+
+        public Course CompleteCourse(int id)
+        {
+
+            Course course = Course.Where(course => course.Id == id).FirstOrDefault();
+            course.Completed = true;
+            SaveChanges();
+
+            return course;
+        }
+
+        public int GetCourseToughness(int id)
+        {
+            return Course.Where(user => user.Id == id).FirstOrDefault().CourseToughness;
+        }
     }
 }

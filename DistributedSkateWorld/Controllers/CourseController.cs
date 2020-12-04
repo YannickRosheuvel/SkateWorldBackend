@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Cors;
 using DistributedSkateWorld.Interfaces;
 using DistributedSkateWorld.DAL;
 using DistributedSkateWorld.Models;
+using Microsoft.AspNetCore.Http;
+using DistributedSkateWorld.ViewModels;
 
 namespace DistributedSkateWorld.Controllers
 {
@@ -30,8 +32,14 @@ namespace DistributedSkateWorld.Controllers
         [HttpGet]
         public IEnumerable<Course> Get()
         {
-
-            return iCourse.GetCourses();
+            try
+            {
+                return iCourse.GetCourses();
+            }
+            catch(Exception ex)
+            {
+                throw new ArgumentException("Internal server error");
+            }
 
         }
 
@@ -51,6 +59,11 @@ namespace DistributedSkateWorld.Controllers
 
         }
 
+        [HttpPut("{id}/complete")]
+        public Course CourseCompleted(int id)
+        {
+            return iCourse.CompleteCourse(id);
+        }
 
     }
 }

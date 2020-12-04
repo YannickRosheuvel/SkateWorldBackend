@@ -12,12 +12,15 @@ namespace DistributedSkateWorld.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        [HttpGet("{id}")]
-        public User Get(int id)
+
+        public User Get()
         {
-
-            return new User();
-
+            User user = new User()
+            {
+                FirstName = "Yannick",
+                LastName = "Rosheuvel"
+            };
+            return user;
         }
 
     }

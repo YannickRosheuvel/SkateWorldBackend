@@ -14,5 +14,6 @@ namespace DistributedSkateWorld.Interfaces
         IEnumerable<Course> RemoveCourse();
         IEnumerable<Course> ChangeCourse();
         Course GetSpecificCourse(int id);
+        public Course CompleteCourse(int id);
     }
 }

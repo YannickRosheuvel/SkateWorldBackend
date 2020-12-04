@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DistributedSkateWorld.DAL
 {
-    public class UserDAL: SkateWorldContext, IUser
+    public class UserDAL : SkateWorldContext, IUser
     {
         public User AddExperience(int courseToughness, int userId)
         {
@@ -22,14 +22,33 @@ namespace DistributedSkateWorld.DAL
 
         public User Login(string email, string password)
         {
-            foreach(var user in User)
+            foreach (var user in User)
             {
-                if(user.Email == email && user.Paswword == password)
+                if (user.Email == email && BCrypt.Net.BCrypt.Verify(password, user.Paswword))
                 {
                     return user;
                 }
             }
             return new User();
+        }
+
+        public User Register(User registerData)
+        {
+            User newUser = new User
+            {
+                FirstName = registerData.FirstName,
+                LastName = registerData.LastName,
+                Email = registerData.Email,
+                Paswword = BCrypt.Net.BCrypt.HashPassword(registerData.Paswword),
+                Username = registerData.Username,
+                Address = registerData.Address
+                
+            };
+
+            User.Add(newUser);
+            SaveChanges();
+
+            return newUser;
         }
 
         public void SaveUser()
@@ -38,5 +57,6 @@ namespace DistributedSkateWorld.DAL
             SaveChanges();
 
         }
+
     }
 }

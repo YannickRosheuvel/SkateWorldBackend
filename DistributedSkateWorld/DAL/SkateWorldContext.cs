@@ -20,7 +20,6 @@ namespace DistributedSkateWorld.DAL
         public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<Trick> Trick { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Comment> Comment { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -74,7 +73,7 @@ namespace DistributedSkateWorld.DAL
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Adres).HasMaxLength(50);
+                entity.Property(e => e.Address).HasMaxLength(50);
 
                 entity.Property(e => e.Email).HasMaxLength(50);
 

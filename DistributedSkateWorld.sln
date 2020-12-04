@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DistributedSkateWorld", "DistributedSkateWorld\DistributedSkateWorld.csproj", "{A258C6F9-130C-442E-8BE0-54621F9051CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseHandling", "DistributedSkateWorld\CourseHandling.csproj", "{A258C6F9-130C-442E-8BE0-54621F9051CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkateWorldTests", "SkateWorldTests\SkateWorldTests.csproj", "{32E91F00-6796-4D19-B7E5-396E2B23FEF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkateWorldTests", "SkateWorldTests\SkateWorldTests.csproj", "{32E91F00-6796-4D19-B7E5-396E2B23FEF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
