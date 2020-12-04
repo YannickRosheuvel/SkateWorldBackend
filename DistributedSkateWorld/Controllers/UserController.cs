@@ -38,10 +38,6 @@ namespace DistributedSkateWorld.Controllers
         {
             User user = userBLL.LoginUser(loginData.EmailAdress, loginData.Password);
 
-            HttpContext.Session.SetInt32("UserID", user.Id);
-
-            //HttpContext.Session.Set("XP", user.Xp);
-
             return user;
 
         }
@@ -54,14 +50,6 @@ namespace DistributedSkateWorld.Controllers
             userToRegister.Email = registerData.EmailAdress;
 
             User user = userBLL.RegisterUser(userToRegister);
-
-            HttpContext.Session.SetInt32("UserID", user.Id);
-            HttpContext.Session.SetString("Firstname", user.FirstName);
-            HttpContext.Session.SetString("LastName", user.LastName);
-            HttpContext.Session.SetString("Email", user.Email);
-            HttpContext.Session.SetString("Adress", user.Address);
-            HttpContext.Session.SetInt32("Level", user.Level);
-            HttpContext.Session.SetString("Rank", user.Rank);
 
             return user;
         }

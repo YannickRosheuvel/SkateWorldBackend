@@ -24,6 +24,11 @@ namespace DistributedSkateWorld.Logic
             experienceNeeded = 100;
         }
 
+        public User GetUserByID(int id)
+        {
+            return userDAL.GetUser(id);
+        }
+        
         public User LoginUser(string email, string password)
         {
             var loggedUser = userDAL.Login(email, password);

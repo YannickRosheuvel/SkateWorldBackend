@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DistributedSkateWorld.Interfaces;
+using DistributedSkateWorld.Logic;
 using DistributedSkateWorld.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +14,19 @@ namespace DistributedSkateWorld.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
+
+        public IUser _iUser;
+        UserBLL userBLL;
+        public HomeController()
+        {
+            userBLL = new UserBLL(_iUser);
+        }
+
         [HttpGet("{id}")]
         public User Get(int id)
         {
 
-            return new User();
+            return userBLL.GetUserByID(id);
 
         }
 

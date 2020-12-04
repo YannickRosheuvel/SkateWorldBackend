@@ -10,6 +10,8 @@ using DistributedSkateWorld.DAL;
 using DistributedSkateWorld.Models;
 using Microsoft.AspNetCore.Http;
 using DistributedSkateWorld.ViewModels;
+using DistributedSkateWorld.Logic;
+using CourseHandling.Logic;
 
 namespace DistributedSkateWorld.Controllers
 {
@@ -20,13 +22,14 @@ namespace DistributedSkateWorld.Controllers
 
         private readonly ICourse iCourse;
         private readonly ITrick iTrick;
+        CourseBLL courseBLL;
+        TrickBLL trickBLL;
         private readonly ILogger<CourseController> _logger;
 
-        public CourseController(ILogger<CourseController> logger)
+        public CourseController()
         {
-            _logger = logger;
-            iCourse = new CourseDAL();
-            iTrick = new TrickDAL();
+            trickBLL = new TrickBLL(trickBLL);
+            courseBLL = new CourseBLL(courseBLL);
     }
 
         [HttpGet]
@@ -34,7 +37,7 @@ namespace DistributedSkateWorld.Controllers
         {
             try
             {
-                return iCourse.GetCourses();
+                return courseBLL.GetCourses();
             }
             catch(Exception ex)
             {
@@ -47,7 +50,7 @@ namespace DistributedSkateWorld.Controllers
         public Course GetSpecificCourse(int id)
         {
 
-            return iCourse.GetSpecificCourse(id);
+            return courseBLL.GetSpecificCourse(id);
 
         }
 
@@ -55,14 +58,14 @@ namespace DistributedSkateWorld.Controllers
         public IEnumerable<Trick> GetCourseTricks(int id)
         {
 
-            return iTrick.GetCourseTricks(id);
+            return trickBLL.GetCourseTricks(id);
 
         }
 
         [HttpPut("{id}/complete")]
         public Course CourseCompleted(int id)
         {
-            return iCourse.CompleteCourse(id);
+            return courseBLL.CompleteCourse(id);
         }
 
     }
