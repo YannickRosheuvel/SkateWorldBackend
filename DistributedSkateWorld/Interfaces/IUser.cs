@@ -11,6 +11,7 @@ namespace DistributedSkateWorld.Interfaces
         void SaveUser();
         User GetUser(int id);
         User Login(string email, string password);
-        User AddExperience(int courseToughness, int userId);
+        User AddExperience(int courseId, int userId, int courseToughness);
+        User Register(User registerData);
     }
 }

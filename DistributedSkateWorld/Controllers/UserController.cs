@@ -27,7 +27,9 @@ namespace DistributedSkateWorld.Controllers
         {
             if(id != 0)
             {
-                return userBLL.AddExperience(id, 12);
+                int courseToughness = userBLL.GetCourseToughness(id);
+
+                return userBLL.AddExperience(id, 12, courseToughness);
             }
             return new User();
 

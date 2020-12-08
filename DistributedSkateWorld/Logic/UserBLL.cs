@@ -13,25 +13,23 @@ namespace DistributedSkateWorld.Logic
     {
         private IUser _iUser;
         CourseDAL courseDAL;
-        UserDAL userDAL;
         private double experienceNeeded;
 
         public UserBLL(IUser iUser)
         {
             courseDAL = new CourseDAL();
-            userDAL = new UserDAL();
             _iUser = iUser;
             experienceNeeded = 100;
         }
 
         public User GetUserByID(int id)
         {
-            return userDAL.GetUser(id);
+            return _iUser.GetUser(id);
         }
         
         public User LoginUser(string email, string password)
         {
-            var loggedUser = userDAL.Login(email, password);
+            var loggedUser = _iUser.Login(email, password);
 
             if (loggedUser.Id != 0)
             {
@@ -45,7 +43,7 @@ namespace DistributedSkateWorld.Logic
 
         public User RegisterUser(User userToRegister)
         {
-            var loggedUser = userDAL.Register(userToRegister);
+            var loggedUser = _iUser.Register(userToRegister);
 
             if (loggedUser.Id != 0)
             {
@@ -57,6 +55,11 @@ namespace DistributedSkateWorld.Logic
             }
         }
 
+        public int GetCourseToughness(int id)
+        {
+            return courseDAL.GetCourseToughness(id);
+        }
+
         private double calculateExperienceAmount(int courseToughness)
         {
             double timesXP = courseToughness * 0.5;
@@ -64,11 +67,9 @@ namespace DistributedSkateWorld.Logic
             return xpToBeAdded;
         }
 
-        public User AddExperience(int courseId, int userId)
+        public User AddExperience(int courseId, int userId, int courseToughness)
         {
-           User user = userDAL.GetUser(userId);
-
-            int courseToughness = courseDAL.GetCourseToughness(courseId);
+           User user = _iUser.GetUser(userId);
 
             double experienceAdded = calculateExperienceAmount(courseToughness);
 
@@ -76,7 +77,7 @@ namespace DistributedSkateWorld.Logic
             {
                 user.Xp = user.Xp + experienceAdded;
 
-                userDAL.SaveUser();
+                _iUser.SaveUser();
                 return user;
             }
             else
@@ -86,7 +87,7 @@ namespace DistributedSkateWorld.Logic
                 user.Xp = experienceLeft;
                 user.Level = user.Level + 1;
 
-                userDAL.SaveUser();
+                _iUser.SaveUser();
                 return user;
             }
 

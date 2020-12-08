@@ -19,17 +19,17 @@ namespace DistributedSkateWorld.Controllers
     [Route("api/[controller]")]
     public class CourseController : ControllerBase
     {
-
-        private readonly ICourse iCourse;
         private readonly ITrick iTrick;
+        TrickDAL trickDAL = new TrickDAL();
+        CourseDAL courseDAL = new CourseDAL();
         CourseBLL courseBLL;
         TrickBLL trickBLL;
         private readonly ILogger<CourseController> _logger;
 
         public CourseController()
         {
-            trickBLL = new TrickBLL(trickBLL);
-            courseBLL = new CourseBLL(courseBLL);
+            trickBLL = new TrickBLL(trickDAL);
+            courseBLL = new CourseBLL(courseDAL);
     }
 
         [HttpGet]
@@ -58,7 +58,7 @@ namespace DistributedSkateWorld.Controllers
         public IEnumerable<Trick> GetCourseTricks(int id)
         {
 
-            return trickBLL.GetCourseTricks(id);
+            return iTrick.GetCourseTricks(id);
 
         }
 

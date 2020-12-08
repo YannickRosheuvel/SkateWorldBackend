@@ -10,7 +10,7 @@ namespace DistributedSkateWorld.DAL
 {
     public class UserDAL : SkateWorldContext, IUser
     {
-        public User AddExperience(int courseToughness, int userId)
+        public User AddExperience(int courseId, int userId, int courseToughness)
         {
             throw new NotImplementedException();
         }

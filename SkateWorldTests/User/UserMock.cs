@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SkateWorldTests.UserMock
 {
-    class UserMock : IUser
+    public class UserMock : IUser
     {
         public User AddExperience(int courseToughness, int userId)
         {

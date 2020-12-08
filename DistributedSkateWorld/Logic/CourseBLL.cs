@@ -10,32 +10,30 @@ namespace DistributedSkateWorld.Logic
     public class CourseBLL : ICourse
     {
         private ICourse _iCourse;
-        CourseDAL courseDAL;
 
         public CourseBLL(ICourse iCourse)
         {
-            courseDAL = new CourseDAL();
             _iCourse = iCourse;
         }
 
         public IEnumerable<Course> AddCourse()
         {
-            return courseDAL.AddCourse();
+            return _iCourse.AddCourse();
         }
 
         public IEnumerable<Course> ChangeCourse()
         {
-            return courseDAL.ChangeCourse();
+            return _iCourse.ChangeCourse();
         }
 
         public Course CompleteCourse(int id)
         {
-            return courseDAL.CompleteCourse(id);
+            return _iCourse.CompleteCourse(id);
         }
 
         public IEnumerable<Course> GetCourses()
         {
-            return courseDAL.GetCourses();
+            return _iCourse.GetCourses();
         }
 
         public Course GetSpecificCourse(int id)
@@ -45,7 +43,7 @@ namespace DistributedSkateWorld.Logic
 
         public IEnumerable<Course> RemoveCourse()
         {
-            return courseDAL.RemoveCourse();
+            return _iCourse.RemoveCourse();
         }
     }
 }

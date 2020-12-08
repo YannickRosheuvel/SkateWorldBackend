@@ -11,18 +11,16 @@ namespace CourseHandling.Logic
     public class TrickBLL : ITrick
     {
         private ITrick _iTrick;
-        TrickDAL trickDAL;
         private double experienceNeeded;
 
         public TrickBLL(ITrick iTrick)
         {
-            trickDAL = new TrickDAL();
             _iTrick = iTrick;
         }
 
         public IEnumerable<Trick> GetCourseTricks(int id)
         {
-            return trickDAL.GetCourseTricks(id);
+            return _iTrick.GetCourseTricks(id);
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DistributedSkateWorld.DAL
 {
-    public class TrickDAL: SkateWorldContext, ITrick
+    public class TrickDAL : SkateWorldContext, ITrick
     {
         public IEnumerable<Trick> GetCourseTricks(int id)
         {
