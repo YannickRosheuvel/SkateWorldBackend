@@ -10,11 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using WebSocketManager;
-using Microsoft.AspNetCore.Session;
-using Microsoft.AspNetCore.Http;
 
-namespace DistributedSkateWorld
+namespace CommentSection
 {
     public class Startup
     {
@@ -29,34 +26,17 @@ namespace DistributedSkateWorld
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddCors();
-
-            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddDistributedMemoryCache();
-
-            services.AddSession(options =>
-            {
-                options.Cookie.Name = "ProjectCreationSession";
-                options.IdleTimeout = TimeSpan.FromSeconds(300);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors(options => options.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseHttpsRedirection();
-
-            app.UseSession();
 
             app.UseRouting();
 

@@ -18,6 +18,11 @@ namespace SkateWorldTests.CourseMock
             throw new NotImplementedException();
         }
 
+        public Course CompleteCourse(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Course> GetCourses()
         {
             throw new NotImplementedException();

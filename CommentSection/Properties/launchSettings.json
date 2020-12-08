@@ -4,20 +4,20 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:47788",
-      "sslPort": 44355
+      "applicationUrl": "http://localhost:39984",
+      "sslPort": 44318
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/course",
+      "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DistributedSkateWorld": {
+    "CommentSection": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

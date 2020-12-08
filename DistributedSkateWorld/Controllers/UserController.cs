@@ -23,16 +23,35 @@ namespace DistributedSkateWorld.Controllers
         }
 
         [HttpGet("{id}/xp")]
-        public User Get(int courseToughness)
+        public User Get(int id)
         {
-            return _iUser.AddExperience(courseToughness, 1);
-            
+            if(id != 0)
+            {
+                return userBLL.AddExperience(id, 12);
+            }
+            return new User();
+
         }
 
         [HttpPost("{id}/login")]
-        public User Post([FromBody]LoginViewModel loginData)
+        public User LoginUser([FromBody] LoginViewModel loginData)
         {
-            return userBLL.LoginUser(loginData.EmailAdress, loginData.Password);
+            User user = userBLL.LoginUser(loginData.EmailAdress, loginData.Password);
+
+            return user;
+
+        }
+
+        [HttpPost("{id}/register")]
+        public User RegisterUser([FromBody] RegisterViewModel registerData)
+        {
+            User userToRegister = new User();
+            userToRegister.Address = registerData.Address;
+            userToRegister.Email = registerData.EmailAdress;
+
+            User user = userBLL.RegisterUser(userToRegister);
+
+            return user;
         }
     }
 

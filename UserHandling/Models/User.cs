@@ -13,7 +13,7 @@ namespace DistributedSkateWorld.Models
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Address { get; set; }
+        public string Adres { get; set; }
         public string Paswword { get; set; }
         public string Email { get; set; }
         public double Xp { get; set; }
@@ -21,10 +21,5 @@ namespace DistributedSkateWorld.Models
         public string Rank { get; set; }
 
         public virtual Course Course { get; set; }
-
-        public User()
-        {
-            Rank = "Noob";
-        }
     }
 }
