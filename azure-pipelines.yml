@@ -52,6 +52,9 @@ steps:
     
 - task: Docker@2
   inputs:
-    command: 'build'
-    Dockerfile: 'C:\Users\yanni\Dockerfiles'
+    command: 'buildAndPush'
+    Dockerfile: 
+    buildContext: 'C:\Users\yanni\Dockerfiles'
+    
+
     
