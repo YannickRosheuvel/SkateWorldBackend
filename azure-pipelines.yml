@@ -53,5 +53,5 @@ steps:
 - task: Docker@2
   inputs:
     command: 'build'
-    Dockerfile: 'C:\Users\yanni\Dockerfiles\Dockerfile'
+    Dockerfile: 'C:\Users\yanni\Dockerfiles\'
     
