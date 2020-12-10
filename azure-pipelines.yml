@@ -50,11 +50,6 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     
-- task: Docker@2
-  inputs:
-    command: 'buildAndPush'
-    Dockerfile: 
-    buildContext: 'C:\Users\yanni\Dockerfiles'
     
 
     
