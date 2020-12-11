@@ -16,5 +16,12 @@ namespace DistributedSkateWorld.DAL
             return Trick.Where(trick => trick.CourseId == id).ToList();
 
         }
+
+        public IEnumerable<Trick> GetTricks()
+        {
+
+            return Trick;
+
+        }
     }
 }

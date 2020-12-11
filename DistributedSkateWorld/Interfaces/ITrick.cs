@@ -9,5 +9,6 @@ namespace DistributedSkateWorld.Interfaces
     public interface ITrick
     {
         IEnumerable<Trick> GetCourseTricks(int id);
+        IEnumerable<Trick> GetTricks();
     }
 }

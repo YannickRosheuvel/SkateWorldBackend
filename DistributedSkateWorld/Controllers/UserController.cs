@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DistributedSkateWorld.DAL;
 using DistributedSkateWorld.Interfaces;
 using DistributedSkateWorld.Logic;
 using DistributedSkateWorld.Models;
@@ -15,11 +16,12 @@ namespace DistributedSkateWorld.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        public IUser _iUser;
+        UserDAL userDAL;
         UserBLL userBLL;
         public UserController()
         {
-            userBLL = new UserBLL(_iUser);
+            userDAL = new UserDAL();
+            userBLL = new UserBLL(userDAL);
         }
 
         [HttpGet("{id}/xp")]

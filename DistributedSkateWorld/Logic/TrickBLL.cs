@@ -22,5 +22,10 @@ namespace CourseHandling.Logic
         {
             return _iTrick.GetCourseTricks(id);
         }
+
+        public IEnumerable<Trick> GetTricks()
+        {
+            return _iTrick.GetTricks();
+        }
     }
 }
