@@ -38,7 +38,7 @@ namespace DistributedSkateWorld.Controllers
         }
 
         [HttpPost("{id}/login")]
-        public User LoginUser([FromBody] LoginViewModel loginData)
+        public User LoginUser([FromBody] LoginViewModel loginData) 
         {
             User user = userBLL.LoginUser(loginData.EmailAdress, loginData.Password);
 

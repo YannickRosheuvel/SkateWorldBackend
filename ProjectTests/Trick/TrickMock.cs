@@ -12,5 +12,10 @@ namespace SkateWorldTests.TrickMock
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Trick> GetTricks()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
