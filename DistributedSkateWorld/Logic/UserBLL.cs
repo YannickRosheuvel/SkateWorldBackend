@@ -9,6 +9,7 @@ using System.Text;
 
 namespace DistributedSkateWorld.Logic
 {
+    //test
     public class UserBLL
     {
         private IUser _iUser;
