@@ -1,4 +1,5 @@
-﻿using DistributedSkateWorld.Models;
+﻿using CourseHandling.Models;
+using DistributedSkateWorld.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace DistributedSkateWorld.DAL
         public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<Trick> Trick { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<UserCourses> UserCourses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,13 +41,19 @@ namespace DistributedSkateWorld.DAL
                     .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Name).HasMaxLength(50);
-
-                entity.HasOne(d => d.IdNavigation)
-                    .WithOne(p => p.Course)
-                    .HasForeignKey<Course>(d => d.Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Course_User");
             });
+
+
+            modelBuilder.Entity<UserCourses>()
+                .HasKey(x => new { x.UserID, x.CourseID });
+            modelBuilder.Entity<UserCourses>()
+                .HasOne(x => x.User)
+                .WithMany(m => m.Courses)
+                .HasForeignKey(x => x.UserID);
+            modelBuilder.Entity<UserCourses>()
+                .HasOne(x => x.Course)
+                .WithMany(e => e.Users)
+                .HasForeignKey(x => x.CourseID);
 
 
             modelBuilder.Entity<Trick>(entity =>

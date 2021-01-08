@@ -8,10 +8,7 @@ using Microsoft.AspNetCore.Cors;
 using DistributedSkateWorld.Interfaces;
 using DistributedSkateWorld.DAL;
 using DistributedSkateWorld.Models;
-using Microsoft.AspNetCore.Http;
-using DistributedSkateWorld.ViewModels;
-using DistributedSkateWorld.Logic;
-using CourseHandling.Logic;
+using CourseHandling.Models;
 
 namespace DistributedSkateWorld.Controllers
 {
@@ -19,28 +16,23 @@ namespace DistributedSkateWorld.Controllers
     [Route("api/[controller]")]
     public class CourseController : ControllerBase
     {
-        TrickDAL trickDAL = new TrickDAL();
-        CourseDAL courseDAL = new CourseDAL();
-        CourseBLL courseBLL;
-        TrickBLL trickBLL;
 
-        public CourseController()
+        private readonly ICourse iCourse;
+        private readonly ITrick iTrick;
+        private readonly ILogger<CourseController> _logger;
+
+        public CourseController(ILogger<CourseController> logger)
         {
-            trickBLL = new TrickBLL(trickDAL);
-            courseBLL = new CourseBLL(courseDAL);
+            _logger = logger;
+            iCourse = new CourseDAL();
+            iTrick = new TrickDAL();
         }
 
         [HttpGet]
         public IEnumerable<Course> Get()
         {
-            try
-            {
-                return courseBLL.GetCourses();
-            }
-            catch(Exception ex)
-            {
-                throw new ArgumentException("Internal server error");
-            }
+
+            return iCourse.GetCourses();
 
         }
 
@@ -48,22 +40,32 @@ namespace DistributedSkateWorld.Controllers
         public Course GetSpecificCourse(int id)
         {
 
-            return courseBLL.GetSpecificCourse(id);
+            return iCourse.GetSpecificCourse(id);
 
         }
 
         [HttpGet("{id}/tricks")]
         public IEnumerable<Trick> GetCourseTricks(int id)
         {
-            trickBLL.GetTricks();
-            return trickBLL.GetCourseTricks(id);
+
+            return iTrick.GetCourseTricks(id);
 
         }
 
-        [HttpPut("{id}/complete")]
-        public Course CourseCompleted(int id)
+        [HttpPut("{userID}/course/{courseID}/complete")]
+        public IActionResult completeCourse(int userID, int courseID)
         {
-            return courseBLL.CompleteCourse(id);
+
+            iCourse.CompleteCourse(userID, courseID);
+            return Ok();
+        }
+
+        [HttpGet("{userID}/getcompleted")]
+        public IEnumerable<UserCourses> getCompletedCourses(int userID)
+        {
+
+            return iCourse.getCompletedCourses(userID);
+
         }
 
     }

@@ -11,8 +11,22 @@ namespace SkateWorldTests.UserMock
 
         private double experienceNeeded;
 
+        List<User> users;
+        User user;
+
         public UserMock()
         {
+            users = new List<User>();
+
+            user = new User
+            {
+                Paswword = "test",
+                Email = "test",
+                Id = 1
+            };
+
+            users.Add(user);
+
             experienceNeeded = 100;
         }
 
@@ -60,9 +74,17 @@ namespace SkateWorldTests.UserMock
             return user;
         }
 
-        public bool Login(string email, string password)
+        public User Login(string email, string password)
         {
-            throw new NotImplementedException();
+            foreach(User user in users)
+            {
+                if(user.Email == email && user.Paswword == password)
+                {
+                    return user;
+                }
+            }
+
+            return new User();
         }
 
         public void SaveUser()
@@ -70,10 +92,6 @@ namespace SkateWorldTests.UserMock
             
         }
 
-        User IUser.Login(string email, string password)
-        {
-            throw new NotImplementedException();
-        }
 
         public User Register(User registerData)
         {

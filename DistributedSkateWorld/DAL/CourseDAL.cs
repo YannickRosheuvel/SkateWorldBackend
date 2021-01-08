@@ -1,4 +1,5 @@
 ﻿
+using CourseHandling.Models;
 using DistributedSkateWorld.Interfaces;
 using DistributedSkateWorld.Models;
 using System;
@@ -72,14 +73,32 @@ namespace DistributedSkateWorld.DAL
             return null;
         }
 
-        public Course CompleteCourse(int id)
+        public UserCourses CompleteCourse(int userID, int courseID)
         {
 
-            Course course = Course.Where(course => course.Id == id).FirstOrDefault();
-            course.Completed = true;
-            SaveChanges();
+            UserCourses userCourses = new UserCourses
+            {
+                CourseID = courseID,
+                UserID = userID
+            };
 
-            return course;
+            if (UserCourses.Where(x => x.UserID == userID) == null && UserCourses.Where(x => x.CourseID == courseID) == null)
+            {
+                UserCourses.Add(userCourses);
+                SaveChanges();
+            }
+
+
+
+
+            return userCourses;
+        }
+
+        public IEnumerable<UserCourses> getCompletedCourses(int userID)
+        {
+
+            return UserCourses.Where(x => x.UserID == userID);
+
         }
 
         public int GetCourseToughness(int id)

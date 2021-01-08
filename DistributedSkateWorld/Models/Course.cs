@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseHandling.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,9 +13,8 @@ namespace DistributedSkateWorld.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int CourseToughness { get; set; }
-
-        public virtual User IdNavigation { get; set; }
         public virtual Trick Trick { get; set; }
         public bool Completed { get; set; }
+        public IList<UserCourses> Users { get; set; }
     }
 }

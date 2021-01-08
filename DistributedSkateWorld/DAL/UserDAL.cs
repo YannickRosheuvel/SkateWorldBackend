@@ -34,21 +34,13 @@ namespace DistributedSkateWorld.DAL
 
         public User Register(User registerData)
         {
-            User newUser = new User
-            {
-                FirstName = registerData.FirstName,
-                LastName = registerData.LastName,
-                Email = registerData.Email,
-                Paswword = BCrypt.Net.BCrypt.HashPassword(registerData.Paswword),
-                Username = registerData.Username,
-                Address = registerData.Address
-                
-            };
 
-            User.Add(newUser);
+            User.Add(registerData);
             SaveChanges();
 
-            return newUser;
+            return registerData;
+
+
         }
 
         public void SaveUser()

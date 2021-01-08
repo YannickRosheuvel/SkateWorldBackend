@@ -27,5 +27,17 @@ namespace UserTests
             Assert.AreEqual(2, actual.Level);
             //test
         }
+
+        [TestMethod]
+        public void login_is_true_test()
+        {
+            UserMock userMock = new UserMock();
+            UserBLL userBLL = new UserBLL(userMock);
+
+            var actual = userBLL.Login("test", "test");
+
+            Assert.AreEqual("test", actual.Email);
+            //test
+        }
     }
 }

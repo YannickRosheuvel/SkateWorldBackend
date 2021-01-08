@@ -1,4 +1,5 @@
 ﻿
+using CourseHandling.Models;
 using DistributedSkateWorld.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace DistributedSkateWorld.Interfaces
         IEnumerable<Course> RemoveCourse();
         IEnumerable<Course> ChangeCourse();
         Course GetSpecificCourse(int id);
-        public Course CompleteCourse(int id);
+        public UserCourses CompleteCourse(int userID, int courseID);
+        public IEnumerable<UserCourses> getCompletedCourses(int userID);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseHandling.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,8 +20,7 @@ namespace DistributedSkateWorld.Models
         public double Xp { get; set; }
         public int Level { get; set; }
         public string Rank { get; set; }
-
-        public virtual Course Course { get; set; }
+        public IList<UserCourses> Courses { get; set; }
 
         public User()
         {

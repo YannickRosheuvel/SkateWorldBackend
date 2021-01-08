@@ -27,7 +27,7 @@ namespace DistributedSkateWorld.Logic
             return _iUser.GetUser(id);
         }
         
-        public User LoginUser(string email, string password)
+        public User Login(string email, string password)
         {
             var loggedUser = _iUser.Login(email, password);
 

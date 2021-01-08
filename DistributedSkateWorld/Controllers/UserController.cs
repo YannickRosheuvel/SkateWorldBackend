@@ -24,6 +24,14 @@ namespace DistributedSkateWorld.Controllers
             userBLL = new UserBLL(userDAL);
         }
 
+        [HttpGet("{id}/user")]
+        public User GetUserXP(int id)
+        {
+
+            return userBLL.GetUserByID(id);
+
+        }
+
         [HttpGet("{id}/xp")]
         public User Get(int id)
         {
@@ -40,23 +48,23 @@ namespace DistributedSkateWorld.Controllers
         [HttpPost("{id}/login")]
         public User LoginUser([FromBody] LoginViewModel loginData) 
         {
-            User user = userBLL.LoginUser(loginData.EmailAdress, loginData.Password);
+            User user = userBLL.Login(loginData.EmailAdress, loginData.Password);
 
             return user;
 
         }
 
         [HttpPost("{id}/register")]
-        public User RegisterUser([FromBody] RegisterViewModel registerData)
+        public User RegisterUser([FromBody] User registerData)
         {
-            User userToRegister = new User();
-            userToRegister.Address = registerData.Address;
-            userToRegister.Email = registerData.EmailAdress;
+            //User userToRegister = new User();
+            //userToRegister.Address = registerData.Address;
+            //userToRegister.Email = registerData.EmailAdress;
 
-            User user = userBLL.RegisterUser(userToRegister);
+            User user = userBLL.RegisterUser(registerData);
 
             return user;
-        }
+         }
     }
 
 }

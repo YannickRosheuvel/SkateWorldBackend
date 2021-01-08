@@ -1,4 +1,5 @@
-﻿using DistributedSkateWorld.DAL;
+﻿using CourseHandling.Models;
+using DistributedSkateWorld.DAL;
 using DistributedSkateWorld.Interfaces;
 using DistributedSkateWorld.Models;
 using System;
@@ -26,9 +27,14 @@ namespace DistributedSkateWorld.Logic
             return _iCourse.ChangeCourse();
         }
 
-        public Course CompleteCourse(int id)
+        public UserCourses CompleteCourse(int userID, int courseID)
         {
-            return _iCourse.CompleteCourse(id);
+            return _iCourse.CompleteCourse(userID, courseID);
+        }
+
+        public IEnumerable<UserCourses> getCompletedCourses(int userID)
+        {
+            return _iCourse.getCompletedCourses(userID);
         }
 
         public IEnumerable<Course> GetCourses()

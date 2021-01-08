@@ -3,35 +3,22 @@ using DistributedSkateWorld.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DistributedSkateWorld.Migrations
 {
     [DbContext(typeof(SkateWorldContext))]
-    partial class SkateWorldContextModelSnapshot : ModelSnapshot
+    [Migration("20210105115213_mtmr")]
+    partial class mtmr
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("CourseHandling.Models.UserCourses", b =>
-                {
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CourseID")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserID", "CourseID");
-
-                    b.HasIndex("CourseID");
-
-                    b.ToTable("UserCourses");
-                });
 
             modelBuilder.Entity("DistributedSkateWorld.Models.Course", b =>
                 {
@@ -135,21 +122,6 @@ namespace DistributedSkateWorld.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("CourseHandling.Models.UserCourses", b =>
-                {
-                    b.HasOne("DistributedSkateWorld.Models.Course", "Course")
-                        .WithMany("Users")
-                        .HasForeignKey("CourseID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DistributedSkateWorld.Models.User", "User")
-                        .WithMany("Courses")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("DistributedSkateWorld.Models.Trick", b =>
