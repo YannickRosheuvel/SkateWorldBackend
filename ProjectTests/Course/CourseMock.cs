@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CourseHandling.Models;
 using DistributedSkateWorld.Interfaces;
 using DistributedSkateWorld.Models;
 
@@ -19,6 +20,16 @@ namespace SkateWorldTests.CourseMock
         }
 
         public Course CompleteCourse(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserCourses CompleteCourse(int userID, int courseID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<UserCourses> getCompletedCourses(int userID)
         {
             throw new NotImplementedException();
         }
