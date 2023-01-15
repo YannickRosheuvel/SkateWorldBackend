@@ -7,13 +7,13 @@ using System.Text;
 
 namespace DistributedSkateWorld.DAL
 {
-    public partial class SkateWorldContext : DbContext
+    public partial class RunningContext : DbContext
     {
-        public SkateWorldContext()
+        public RunningContext()
         {
         }
 
-        public SkateWorldContext(DbContextOptions<SkateWorldContext> options)
+        public RunningContext(DbContextOptions<RunningContext> options)
             : base(options)
         {
         }
@@ -28,7 +28,7 @@ namespace DistributedSkateWorld.DAL
             if (!optionsBuilder.IsConfigured)
             {
                 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=mssql.fhict.local;Initial Catalog=dbi429901_skateworld;Persist Security Info=True;User ID=dbi429901_skateworld;Password=StarWars1");
+                optionsBuilder.UseSqlServer("Server=mssqlstud.fhict.local;Database=dbi429901_running;User Id=dbi429901_running;Password=StarWars1;");
             }
         }
 

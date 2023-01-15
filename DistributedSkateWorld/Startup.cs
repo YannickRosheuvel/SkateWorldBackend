@@ -46,7 +46,8 @@ namespace DistributedSkateWorld
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors(options => options.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(options => options.WithOrigins(" https://exp.host/@yannick0430/MasterLibi?release-channel=default").AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(options => options.WithOrigins("http://localhost:19006").AllowAnyHeader().AllowAnyMethod());
 
             if (env.IsDevelopment())
             {

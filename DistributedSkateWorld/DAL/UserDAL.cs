@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DistributedSkateWorld.DAL
 {
-    public class UserDAL : SkateWorldContext, IUser
+    public class UserDAL : RunningContext, IUser
     {
         public User AddExperience(int courseId, int userId, int courseToughness)
         {
